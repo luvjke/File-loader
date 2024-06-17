@@ -1,0 +1,19 @@
+@import '../variables.scss';
+
+@mixin tablet {
+  @media (max-width: 768px) {
+    @content;
+  }
+}
+
+@mixin laptop {
+  @media (max-width: 1024px) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media (max-width: 1232px) {
+    @content;
+  }
+}

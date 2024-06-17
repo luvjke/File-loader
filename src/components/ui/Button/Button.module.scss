@@ -1,0 +1,19 @@
+@import '../../../scss/variables.scss';
+@import '../../../scss/mixins/reset.scss';
+@import '../../../scss/mixins/utils.scss';
+@import '../../../scss/mixins/text.scss';
+
+.button {
+  @include reset-button();
+  @include focus();
+  position: relative;
+
+  &:disabled {
+    pointer-events: none;
+  }
+}
+
+.icon {
+  @include vertical-center();
+  left: 16px;
+}

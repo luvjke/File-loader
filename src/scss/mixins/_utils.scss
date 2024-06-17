@@ -1,0 +1,21 @@
+@mixin vertical-center {
+  display: flex;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+@mixin focus {
+  outline: none;
+
+  &:focus:not(:disabled) {
+    box-shadow: $basic-box-shadow;
+  }
+
+  &:focus:not(:focus-visible) {
+    box-shadow: none;
+  }
+
+  &:focus-visible:not(:disabled) {
+    box-shadow: $basic-box-shadow;
+  }
+}
