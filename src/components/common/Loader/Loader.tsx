@@ -2,10 +2,11 @@ import React from 'react';
 
 import { Button } from '../../ui/Button';
 import styles from './Loader.module.scss';
+import { useMethods } from '../../../hooks/useMethods';
 
 export const Loader = () => {
   const [token, setToken] = React.useState('');
-
+  const { handleFileChange, handleUploadFile } = useMethods(token);
   const TOKEN_URL = `https://oauth.yandex.ru/authorize?response_type=token&client_id=${process.env.REACT_APP_CLIENT_ID}`;
 
   const handleAuthorization = () => {
@@ -29,7 +30,7 @@ export const Loader = () => {
       getToken();
     }
   }, []);
-  console.log(token);
+
   return (
     <div>
       {!token ? (
@@ -42,7 +43,10 @@ export const Loader = () => {
           />
         </div>
       ) : (
-        <div>dsadas</div>
+        <div>
+          <button onClick={handleUploadFile}>жМИ</button>
+          <input type="file" onChange={handleFileChange} accept="image/*,.png,.jpg,.web" />
+        </div>
       )}
     </div>
   );
