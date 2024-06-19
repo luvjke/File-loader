@@ -3,32 +3,43 @@ import React, { ChangeEvent } from 'react';
 
 export const useMethods = (token: string) => {
   const [inputFile, setInputFile] = React.useState<File[]>([]);
+  console.log(inputFile);
 
-  const ENCODED_PATH = encodeURIComponent(inputFile[0]?.name);
+  // const imageURl = URL.createObjectURL(inputFile[0]);
 
   const handleFileChange = (event: ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files;
     if (file && file.length > 0) {
       const fileList = Array.from(file);
+
       setInputFile(fileList);
     }
   };
 
   const handleUploadFile = async () => {
-    try {
-      const response = await axios.get(
-        `https://cloud-api.yandex.net/v1/disk/resources/upload?path=${ENCODED_PATH}`,
-        {
-          headers: {
-            Authorization: `OAuth ${token}`,
-          },
-        }
-      );
-      const POST_URL = response.data.href;
-      await axios.put(POST_URL, inputFile);
-    } catch (error) {
-      alert(error);
+    for await (const file of inputFile) {
+      try {
+        const formData = new FormData();
+        formData.append('file', file);
+
+        const response = await axios.get(
+          `https://cloud-api.yandex.net/v1/disk/resources/upload?path=${encodeURIComponent(
+            file.name
+          )}`,
+          {
+            headers: {
+              Authorization: `OAuth ${token}`,
+            },
+          }
+        );
+        const POST_URL = response.data.href;
+        await axios.put(POST_URL, formData);
+      } catch (error) {
+        alert(error);
+      } finally {
+        alert('Файл загуржен');
+      }
     }
   };
-  return { handleFileChange, handleUploadFile };
+  return { handleFileChange, handleUploadFile, inputFile };
 };
