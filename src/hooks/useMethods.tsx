@@ -10,10 +10,13 @@ export const useMethods = (token: string) => {
   const handleFileChange = (event: ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files;
     if (file && file.length > 0) {
-      const fileList = Array.from(file);
+      const fileList = file;
 
-      setInputFile(fileList);
+      setInputFile((prevFiles) => [...prevFiles, ...Array.from(fileList)]);
     }
+  };
+  const removeFile = (index: number) => {
+    setInputFile((prevFiles) => prevFiles.filter((_, i) => i !== index));
   };
 
   const handleUploadFile = async () => {
@@ -41,5 +44,5 @@ export const useMethods = (token: string) => {
       }
     }
   };
-  return { handleFileChange, handleUploadFile, inputFile };
+  return { handleFileChange, handleUploadFile, inputFile, removeFile };
 };
