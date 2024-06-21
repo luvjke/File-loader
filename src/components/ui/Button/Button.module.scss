@@ -17,3 +17,65 @@
   @include vertical-center();
   left: 16px;
 }
+
+.filled {
+  @include textRegular-20();
+  background-color: $filled-background;
+  border: $border-default;
+  padding: 15px 50px;
+  border-radius: 8px;
+  span {
+    background-color: $filled-background;
+    color: $font-color-default;
+  }
+  &:hover {
+    background-color: $global-background;
+    span {
+      background-color: $global-background;
+      color: $white;
+    }
+  }
+}
+
+.custom {
+  @include textRegular-20();
+  background-color: $ghost-background;
+  border: $border-default;
+  padding: 40px 300px;
+  border-radius: 16px;
+  animation: animated-border 1.5s infinite;
+  span {
+    background-color: $ghost-background;
+    color: $font-color-default;
+  }
+  &:hover {
+    background-color: $global-background;
+    span {
+      background-color: $global-background;
+      color: $white;
+    }
+  }
+  @keyframes animated-border {
+    0% {
+      box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.4);
+    }
+    100% {
+      box-shadow: 0 0 0 20px rgba(255, 255, 255, 0);
+    }
+  }
+}
+
+.remove {
+  border: $border-default;
+  padding: 5px 45px;
+  span {
+    color: $font-color-default;
+  }
+  &:hover {
+    background-color: $ghost-background;
+    span {
+      background-color: $ghost-background;
+      color: $white;
+    }
+  }
+}

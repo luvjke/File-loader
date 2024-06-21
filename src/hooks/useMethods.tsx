@@ -40,7 +40,7 @@ export const useMethods = (token: string) => {
       } catch (error) {
         alert(error);
       } finally {
-        alert('Файл загуржен');
+        console.log(`Файл загуржен ${file.name}`);
       }
     }
   };

@@ -1,11 +1,13 @@
 // COLORS
 
-$basic-white: #ffffff;
-$disabled-gray: #808080;
-$selected-gray: #bfbfbf;
-$input-gray: #d9d9d9;
-$title-black: #000000;
-$marine: #1890ff;
+$white: #ffffff;
+$black: #000000;
+
+$global-background: #1c2428;
+$filled-background: #1c3032;
+$ghost-background: #2e3439;
+
+$font-color-default: #1dbf99;
 
 // FOLDER COLORS
 
@@ -16,6 +18,7 @@ $sunrise: #fadb14;
 
 // FONTS
 
+$font-family-chakra: 'Chakra Petch', sans-serif;
 $font-family-roboto: 'Roboto', monospace;
 
 // FONT WEIGHTS
@@ -26,7 +29,10 @@ $font-weight-bold: 700;
 
 // SHADOWS
 
-$basic-box-shadow: 0 0 0 1px transparent,
+$basic-box-shadow:
+  0 0 0 1px transparent,
   0 0 0 2px #223c50;
 
 //  BORDER
+
+$border-default: 1px solid #1da788;

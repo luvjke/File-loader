@@ -10,6 +10,7 @@ export const Loader = () => {
   const filePicker = React.useRef<HTMLInputElement>(null);
 
   const { handleFileChange, handleUploadFile, inputFile, removeFile } = useMethods(token);
+
   // // console.log(inputFile);
   // const imageUrl = URL.createObjectURL(inputFile[0]);
   // console.log(imageUrl);
@@ -55,38 +56,54 @@ export const Loader = () => {
       {!token ? (
         <div className={styles.autorization_button}>
           <Button
-            version={'unfilled'}
-            label={'Нажми для авторизации'}
+            version={'filled'}
+            label={'Click to log in'}
             tag={'button'}
             onClick={() => handleAuthorization()}
           />
         </div>
       ) : (
         <div className={styles.loader_container}>
-          <button onClick={handleUploadFile}>жМИ</button>
-          <button onClick={handlePick}>dasda</button>
-          <input
-            type="file"
-            onChange={handleFileChange}
-            accept="image/*,.png,.jpg,.web"
-            multiple={true}
-            id="1"
-            className={styles.hidden}
-            ref={filePicker}
-          />
-          <label>
+          <div className={styles.loader_box}>
+            <div className={styles.loader_button}>
+              <Button
+                onClick={handleUploadFile}
+                version={'filled'}
+                label={'Publish now'}
+                tag="button"
+              />
+            </div>
+            <div className={styles.loader_files}>
+              <Button onClick={handlePick} version={'custom'} label={'Add files'} tag="button" />
+              <input
+                type="file"
+                onChange={handleFileChange}
+                multiple={true}
+                id="1"
+                className={styles.hidden}
+                ref={filePicker}
+              />
+            </div>
+          </div>
+          <ul className={styles.files_container}>
             {inputFile.map((file, index) => (
-              <div key={index}>
-                <button onClick={() => removeFile(index)}>Удаляй</button>
-                <img
-                  className={styles.img}
-                  key={index}
-                  src={URL.createObjectURL(file)}
-                  alt={`img-${index}`}
-                />
-              </div>
+              <li className={styles.files_box} key={index}>
+                <img className={styles.img} src={URL.createObjectURL(file)} alt={`img-${index}`} />
+                <div className={styles.info_container}>
+                  <h5 className={styles.filename}>{file.name.replace(/\.[^/.]+$/, '')}</h5>
+                  <h5 className={styles.filename}>{file.type}</h5>
+                </div>
+                <div className={styles.delete_button}>
+                  <Button
+                    onClick={() => removeFile(index)}
+                    version={'remove'}
+                    label={'Delete'}
+                    tag="button"
+                  />
+                </div>
+              </li>
             ))}
-          </label>
+          </ul>
         </div>
       )}
     </div>
