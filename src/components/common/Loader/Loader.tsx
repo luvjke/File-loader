@@ -4,12 +4,14 @@ import React from 'react';
 import { Button } from '../../ui/Button';
 import styles from './Loader.module.scss';
 import { useMethods } from '../../../hooks/useMethods';
+import { Toast } from '../../ui/Toast';
 
 export const Loader = () => {
   const [token, setToken] = React.useState('');
   const filePicker = React.useRef<HTMLInputElement>(null);
 
-  const { handleFileChange, handleUploadFile, inputFile, removeFile } = useMethods(token);
+  const { handleFileChange, handleUploadFile, inputFile, removeFile, toastList, setToastList } =
+    useMethods(token);
 
   // // console.log(inputFile);
   // const imageUrl = URL.createObjectURL(inputFile[0]);
@@ -104,6 +106,7 @@ export const Loader = () => {
               </li>
             ))}
           </ul>
+          {toastList.length > 0 ? <Toast toastList={toastList} setToastList={setToastList} /> : ''}
         </div>
       )}
     </div>
