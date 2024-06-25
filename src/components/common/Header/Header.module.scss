@@ -1,0 +1,17 @@
+@import '../../../scss/mixins/text.scss';
+@import '../../../scss/variables.scss';
+
+.header {
+  max-width: 100%;
+  padding: 15px 30px;
+}
+
+.container_content {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 36px 0 34px;
+}
+
+.container_input {
+  padding: 24px 0 0 44px;
+}

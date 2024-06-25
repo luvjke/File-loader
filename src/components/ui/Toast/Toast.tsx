@@ -1,8 +1,9 @@
+//@ts-ignore
 import React, { useCallback } from 'react';
 import ReactDOM from 'react-dom';
 
 import styles from './Toast.module.scss';
-import { ToastProps } from './Toast.props';
+import { ToastListProps, ToastProps } from './Toast.props';
 
 export const Toast = ({ toastList, setToastList }: ToastProps) => {
   const root = document.getElementById('portal');
@@ -10,12 +11,42 @@ export const Toast = ({ toastList, setToastList }: ToastProps) => {
   const handleDeleteToast = useCallback(
     (id: number) => {
       console.log(id);
-      const toastListItem = toastList.filter((e) => e.id !== id);
+      const toastListItem = toastList.filter((toast) => toast.id !== id);
       setToastList(toastListItem);
     },
     [toastList, setToastList]
   );
 
+  const showToast = (type: string): void => {
+    let toastProperties: ToastListProps = {
+      id: toastList.length,
+      title: '',
+      description: '',
+      backgroundColor: '',
+    };
+
+    switch (type) {
+      case 'success':
+        toastProperties = {
+          id: toastList.length + 1,
+          title: 'Success',
+          description: 'FIle is uploaded',
+          backgroundColor: '#5cb85c',
+        };
+        break;
+      case 'error':
+        toastProperties = {
+          id: toastList.length + 1,
+          title: 'Error',
+          description: 'Something went wrong',
+          backgroundColor: '#471717',
+        };
+        break;
+    }
+    if (toastProperties) {
+      setToastList((prevToastList) => [...prevToastList, toastProperties]);
+    }
+  };
   React.useEffect(() => {
     const interval = setInterval(() => {
       if (toastList.length) {
@@ -26,7 +57,7 @@ export const Toast = ({ toastList, setToastList }: ToastProps) => {
       clearInterval(interval);
     };
   }, [toastList, handleDeleteToast]);
-
+  showToast('success');
   return root
     ? ReactDOM.createPortal(
         <div className={styles.container}>

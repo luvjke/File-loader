@@ -7,48 +7,9 @@ export const useMethods = (token: string) => {
   const [inputFile, setInputFile] = React.useState<File[]>([]);
   const [toastList, setToastList] = React.useState<ToastListProps[]>([]);
   console.log(toastList);
-  // console.log(inputFile);
 
   const removeFile = (index: number) => {
     setInputFile((prevFiles) => prevFiles.filter((_, i) => i !== index));
-  };
-
-  const showToast = (type: string): void => {
-    let toastProperties: ToastListProps = {
-      id: toastList.length,
-      title: '',
-      description: '',
-      backgroundColor: '',
-    };
-
-    switch (type) {
-      case 'success':
-        toastProperties = {
-          id: toastList.length + 1,
-          title: 'Success',
-          description: 'FIle is uploaded',
-          backgroundColor: '#5cb85c',
-        };
-        break;
-      case 'error':
-        toastProperties = {
-          id: toastList.length + 1,
-          title: 'Error',
-          description: 'Something went wrong',
-          backgroundColor: '#471717',
-        };
-        break;
-      default:
-        toastProperties = {
-          id: toastList.length,
-          title: '',
-          description: '',
-          backgroundColor: '',
-        };
-    }
-    if (toastProperties) {
-      setToastList((prevToastList) => [...prevToastList, toastProperties]);
-    }
   };
 
   const handleFileChange = (event: ChangeEvent<HTMLInputElement>) => {
@@ -77,11 +38,9 @@ export const useMethods = (token: string) => {
         );
         const POST_URL = response.data.href;
         await axios.put(POST_URL, formData);
-        showToast('success');
-      } catch (error) {
-        showToast('error');
-      }
+      } catch (error) {}
     }
   };
+
   return { handleFileChange, handleUploadFile, inputFile, removeFile, toastList, setToastList };
 };

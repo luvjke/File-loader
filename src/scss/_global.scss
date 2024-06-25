@@ -1,5 +1,6 @@
+@import './variables.scss';
+
 body {
-  background-color: #ffffff;
   margin: 0 auto;
   text-size-adjust: none;
 }
@@ -11,11 +12,31 @@ body {
   outline: none;
   padding: 0;
   text-decoration: none;
-  color: black;
-  background-color: #1c2428;
 }
 
 img {
   height: auto;
   width: 100%;
+}
+
+main {
+  height: 100vh;
+}
+
+.dark {
+  background-color: $global-background;
+  color: $font-color-default;
+
+  header {
+    background-color: $header-background;
+  }
+}
+
+.light {
+  background-color: $global-background-light;
+  color: $white;
+
+  header {
+    background-color: $global-background-light;
+  }
 }

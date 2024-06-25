@@ -1,12 +1,18 @@
-// COLORS
+// GLOBAL COLORS
 
 $white: #ffffff;
 $black: #000000;
 
+// BACKGROUND COLORS
+
 $global-background: #1c2428;
+$global-background-light: #639489;
+$header-background: #242e33;
 $filled-background: #1c3032;
+$filled-background-light: #1dc9a0;
 $ghost-background: #2e3439;
 
+// FONT COLORS
 $font-color-default: #1dbf99;
 
 // FOLDER COLORS
@@ -36,3 +42,4 @@ $basic-box-shadow:
 //  BORDER
 
 $border-default: 1px solid #1da788;
+$border-default-light: 1px solid #1c2428;

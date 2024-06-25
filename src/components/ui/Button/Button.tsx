@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 
 import { ButtonProps } from './Button.props';
 import styles from './Button.module.scss';
+import { ThemeContext } from '../../common/ThemeProvider/ThemeProvider';
 
 export const Button = ({
   onClick,
@@ -15,8 +16,10 @@ export const Button = ({
   href,
   state,
 }: ButtonProps) => {
+  const { theme } = React.useContext(ThemeContext);
   const buttonClassNames = classNames(
     styles.button,
+    theme && styles[theme],
     version && styles[version],
     icon && styles.icon_button
   );

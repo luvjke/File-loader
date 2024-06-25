@@ -1,9 +1,5 @@
 {
-  "extends": [
-    "stylelint-config-standard",
-    "stylelint-config-standard-scss",
-    "stylelint-prettier/recommended"
-  ],
+  "extends": ["stylelint-config-standard-scss", "stylelint-config-standard"],
   "plugins": ["stylelint-order", "stylelint-scss"],
   "rules": {
     "alpha-value-notation": "number",
@@ -13,13 +9,14 @@
     "at-rule-no-unknown": null,
     "scss/at-rule-no-unknown": true,
     "color-function-notation": "legacy",
+    "import-notation": null,
     "declaration-block-no-redundant-longhand-properties": [
       true,
       { "ignoreShorthands": ["grid-template", "inset"] }
     ],
     "declaration-empty-line-before": "never",
     "declaration-no-important": true,
-    "keyframes-name-pattern": "^[a-z][A-Za-z-][a-z]$",
+    "keyframes-name-pattern": null,
     "media-feature-range-notation": "prefix",
     "no-descending-specificity": null,
     "number-max-precision": 2,
@@ -29,7 +26,7 @@
     "scss/selector-no-redundant-nesting-selector": true,
     "scss/at-import-partial-extension": "always",
     "scss/at-mixin-argumentless-call-parentheses": "always",
-    "scss/at-mixin-pattern": "^[a-z][a-z0-9-_]*[a-z0-9]$",
+    "scss/at-mixin-pattern": null,
     "scss/selector-no-union-class-name": true,
     "selector-attribute-quotes": "always",
     "selector-class-pattern": "^[a-z][a-z0-9-_]+[a-z0-9]$",

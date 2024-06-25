@@ -13,9 +13,6 @@ export const Loader = () => {
   const { handleFileChange, handleUploadFile, inputFile, removeFile, toastList, setToastList } =
     useMethods(token);
 
-  // // console.log(inputFile);
-  // const imageUrl = URL.createObjectURL(inputFile[0]);
-  // console.log(imageUrl);
   const TOKEN_URL = `https://oauth.yandex.ru/authorize?response_type=token&client_id=${process.env.REACT_APP_CLIENT_ID}`;
 
   const handleAuthorization = () => {
